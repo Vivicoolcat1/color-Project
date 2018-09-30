@@ -26,6 +26,7 @@ public class GamePanel extends JPanel implements ActionListener , KeyListener {
 	Font titleFont6;
 	Font titleFont7;
 	Font titleFont8;
+	Font titleFont9;
 	final int MENU_STATE = 0;
 
 	final int GAME_STATE = 1;
@@ -37,9 +38,35 @@ public class GamePanel extends JPanel implements ActionListener , KeyListener {
 	
 
 	@Override
+	public void actionPerformed(ActionEvent e) {
+		// TODO Auto-generated method stub
+		System.out.println("Test1");
+		
+		repaint();
+		if (currentState == MENU_STATE) {
+
+			updateMenuState();
+
+		} else if (currentState == GAME_STATE) {
+
+		
+			updateGameState();
+
+		} else if (currentState == END_STATE) {
+
+			updateEndState();
+
+		}
+		else if (currentState == INSTRUCTION_STATE) {
+			updateInstructionState();
+		}
+
+	}
+
+	@Override
 
 	public void paintComponent(Graphics g) {
-
+System.out.println("test3");
 		if (currentState == MENU_STATE) {
 
 			drawMenuState(g);
@@ -59,43 +86,19 @@ public class GamePanel extends JPanel implements ActionListener , KeyListener {
 
 	}
 
-	@Override
-	public void actionPerformed(ActionEvent e) {
-		// TODO Auto-generated method stub
-		System.out.println("Test1");
-		
-		
-		if (currentState == MENU_STATE) {
-
-			updateMenuState();
-
-		} else if (currentState == GAME_STATE) {
-
-		
-			updateGameState();
-
-		} else if (currentState == END_STATE) {
-
-			updateEndState();
-
-		}
-		else if (currentState == INSTRUCTION_STATE) {
-			updateInstructionState();
-		}
-repaint();
-	}
+	
 
 	public GamePanel() {
 		t = new Timer(1000 / 60, this);
-		titleFont1 = new Font("Ariel", Font.PLAIN, 48);
-		titleFont2 = new Font("Ariel", Font.PLAIN, 30);
-		titleFont3 = new Font("Ariel", Font.PLAIN, 30);
-		titleFont4 = new Font("Ariel", Font.PLAIN, 60);
-		titleFont5 = new Font("Ariel", Font.PLAIN, 30);
-		titleFont6 = new Font("Ariel", Font.PLAIN, 35);
-		titleFont7 = new Font("Ariel", Font.PLAIN, 60);
-		titleFont8 = new Font("Ariel", Font.PLAIN, 35);
-		
+		titleFont1 = new Font("Impact", Font.PLAIN, 48);
+		titleFont2 = new Font("Comic Sans MS", Font.PLAIN, 30);
+		titleFont3 = new Font("Comic Sans MS", Font.PLAIN, 30);
+		titleFont4 = new Font("Impact", Font.PLAIN, 60);
+		titleFont5 = new Font("Comic Sans MS", Font.PLAIN, 30);
+		titleFont6 = new Font("Comic Sans MS", Font.PLAIN, 35);
+		titleFont7 = new Font("Impact", Font.PLAIN, 60);
+		titleFont8 = new Font("Comic Sans MS", Font.PLAIN, 20);
+		titleFont9 = new Font("Comic Sans MS", Font.PLAIN, 40);
 		  
 
        
@@ -128,7 +131,9 @@ repaint();
 		else if(e.getKeyCode() == KeyEvent.VK_SPACE && currentState == MENU_STATE) {
 			currentState = INSTRUCTION_STATE;
 		}
-
+		else if(e.getKeyCode() == KeyEvent.VK_ENTER && currentState == INSTRUCTION_STATE) {
+			currentState = MENU_STATE;
+		}
 	}
 	@Override
 	public void keyReleased(KeyEvent e) {
@@ -152,7 +157,8 @@ repaint();
 	}
 
 	public void drawMenuState(Graphics g) {
-		g.setColor(Color.CYAN);
+		
+		this.setBackground(Color.CYAN);
 
 	g.fillRect(0, 0, WIDTH, HEIGHT);
 	g.setFont(titleFont1);
@@ -168,7 +174,7 @@ repaint();
 }
 
 	public void drawGameState(Graphics g) {
-		g.setColor(Color.BLACK);
+		this.setBackground(Color.BLACK);
 
 
 
@@ -176,7 +182,7 @@ repaint();
 	}
 
 	public void drawEndState(Graphics g) {
-		g.setColor(Color.DARK_GRAY);
+		this.setBackground(Color.DARK_GRAY);
 
 		g.fillRect(0, 0, WIDTH, HEIGHT);
 		g.setFont(titleFont4);
@@ -190,14 +196,22 @@ repaint();
 		g.drawString("Press ENTER to restart", 50, 600);
 }
 public void drawInstructionState (Graphics g) {
-	g.setColor(Color.LIGHT_GRAY);
+	this.setBackground(Color.GREEN);
 	g.fillRect(0, 0, WIDTH, HEIGHT);
 	g.setFont(titleFont7);
 	g.setColor(Color.WHITE);
 	g.drawString("INSTRUCTIONS", 50, 200);
 	g.setFont(titleFont8);
 	g.setColor(Color.WHITE);
-	g.drawString("The object of the game is to get points as you can. \n 1 star = 1 point. There is a catch though, you have to be the same color as the thing you are going through or else you DIE! \n To fly press the up arrow key DONT hold it you will fall. \n GOOD LUCK ;D " , 50, 400);
+	g.drawString("The object of the game is to get points as you can." , 50, 400);
+	g.drawString("1 star = 1 point. There is a catch though, ", 50, 440);
+	g.drawString("you have to be the same color as the thing you are going through or else you DIE!", 50, 480);
+	g.drawString("To fly press the up arrow key DONT hold it you will fall.", 50, 520);
+	g.drawString("GOOD LUCK! ;D", 50, 560);
+	g.setFont(titleFont9);
+	g.setColor(Color.WHITE);
+	g.drawString("Press ENTER to go back to the menu", 50, 700);
+	
 }
 	
 	
