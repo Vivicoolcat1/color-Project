@@ -27,6 +27,8 @@ public class GamePanel extends JPanel implements ActionListener , KeyListener {
 	Font titleFont7;
 	Font titleFont8;
 	Font titleFont9;
+	ball cb;
+	boolean moveUp;
 	final int MENU_STATE = 0;
 
 	final int GAME_STATE = 1;
@@ -49,7 +51,9 @@ public class GamePanel extends JPanel implements ActionListener , KeyListener {
 
 		} else if (currentState == GAME_STATE) {
 
-		
+			if(moveUp) {
+				cb.y -= cb.speed;
+			}
 			updateGameState();
 
 		} else if (currentState == END_STATE) {
@@ -99,7 +103,8 @@ System.out.println("test3");
 		titleFont7 = new Font("Impact", Font.PLAIN, 60);
 		titleFont8 = new Font("Comic Sans MS", Font.PLAIN, 20);
 		titleFont9 = new Font("Comic Sans MS", Font.PLAIN, 40);
-		  
+		  cb = new ball(400,800,50,50);
+				  
 
        
 
@@ -133,6 +138,9 @@ System.out.println("test3");
 		}
 		else if(e.getKeyCode() == KeyEvent.VK_ENTER && currentState == INSTRUCTION_STATE) {
 			currentState = MENU_STATE;
+		}
+		if(e.getKeyCode()== KeyEvent.VK_UP) {
+			moveUp =true;
 		}
 	}
 	@Override
