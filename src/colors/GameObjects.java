@@ -11,7 +11,7 @@ public class GameObjects {
 boolean isAlive = true;
 
  
-	public void GameObject(int x, int y, int width, int height) {
+	public GameObjects(int x, int y, int width, int height) {
 		this.x=x;
 		this.y=y;
 		this.width=width;

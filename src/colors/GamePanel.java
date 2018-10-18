@@ -8,7 +8,7 @@ import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 import java.io.IOException;
-
+import java.util.Random;
 
 import javax.swing.JPanel;
 import javax.swing.Timer;
@@ -29,6 +29,7 @@ public class GamePanel extends JPanel implements ActionListener , KeyListener {
 	Font titleFont9;
 	ball cb;
 	boolean moveUp;
+	camera c;
 	final int MENU_STATE = 0;
 
 	final int GAME_STATE = 1;
@@ -50,9 +51,15 @@ public class GamePanel extends JPanel implements ActionListener , KeyListener {
 			updateMenuState();
 
 		} else if (currentState == GAME_STATE) {
-
+			
 			if(moveUp) {
-				cb.y -= cb.speed;
+				cb.speed = -5;
+				
+			}
+			
+			cb.update();
+			if(cb.y <= c.y + 200) {
+				c.y +=cb.y + 200 - c.y;
 			}
 			updateGameState();
 
@@ -103,8 +110,8 @@ System.out.println("test3");
 		titleFont7 = new Font("Impact", Font.PLAIN, 60);
 		titleFont8 = new Font("Comic Sans MS", Font.PLAIN, 20);
 		titleFont9 = new Font("Comic Sans MS", Font.PLAIN, 40);
-		  cb = new ball(400,800,50,50);
-				  
+		  cb = new ball(350,700,50,50);
+			c = new camera(0,0);	  
 
        
 
@@ -129,6 +136,7 @@ System.out.println("test3");
 			currentState = GAME_STATE;
 		} else if (e.getKeyCode() == KeyEvent.VK_ENTER && currentState == GAME_STATE) {
 			currentState = END_STATE;
+			
 		} else if (e.getKeyCode() == KeyEvent.VK_ENTER && currentState == END_STATE) {
 			currentState = MENU_STATE;
 			
@@ -138,15 +146,19 @@ System.out.println("test3");
 		}
 		else if(e.getKeyCode() == KeyEvent.VK_ENTER && currentState == INSTRUCTION_STATE) {
 			currentState = MENU_STATE;
+			
 		}
 		if(e.getKeyCode()== KeyEvent.VK_UP) {
 			moveUp =true;
+			
 		}
 	}
 	@Override
 	public void keyReleased(KeyEvent e) {
 		// TODO Auto-generated method stub
-
+		if(e.getKeyCode()== KeyEvent.VK_UP) {
+moveUp =false;
+;}
 	}
 
 	public void updateMenuState() {
@@ -179,11 +191,12 @@ System.out.println("test3");
 	g.setColor(Color.WHITE);
 	g.drawString("Press SPACE for instructions", 50, 600);
 	System.out.println("test2");
+
 }
 
 	public void drawGameState(Graphics g) {
 		this.setBackground(Color.BLACK);
-
+cb.draw(g,c);
 
 
 	
