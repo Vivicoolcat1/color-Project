@@ -14,7 +14,7 @@ public class ball extends GameObjects {
 		y += speed;
 		if(y >=650) {
 			y = 650;
-		}
+	}
 	}
 
 	Random rand = new Random();

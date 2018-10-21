@@ -30,6 +30,7 @@ public class GamePanel extends JPanel implements ActionListener , KeyListener {
 	ball cb;
 	boolean moveUp;
 	camera c;
+	int by;
 	final int MENU_STATE = 0;
 
 	final int GAME_STATE = 1;
@@ -58,9 +59,12 @@ public class GamePanel extends JPanel implements ActionListener , KeyListener {
 			}
 			
 			cb.update();
-			if(cb.y <= c.y + 200) {
-				c.y +=cb.y + 200 - c.y;
+			if ( by == 500) {
+		 cb.y = 650;
 			}
+			//if(cb.y <= c.y + 200) {
+			//	c.y +=cb.y + 200 - c.y;
+			//}
 			updateGameState();
 
 		} else if (currentState == END_STATE) {
@@ -110,9 +114,10 @@ System.out.println("test3");
 		titleFont7 = new Font("Impact", Font.PLAIN, 60);
 		titleFont8 = new Font("Comic Sans MS", Font.PLAIN, 20);
 		titleFont9 = new Font("Comic Sans MS", Font.PLAIN, 40);
-		  cb = new ball(350,700,50,50);
-			c = new camera(0,0);	  
-
+		  cb = new ball(300,700,50,50);
+			c = new camera(0,0);	
+			
+by= 700-cb.y;
        
 
 
