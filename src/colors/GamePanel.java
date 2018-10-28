@@ -27,10 +27,9 @@ public class GamePanel extends JPanel implements ActionListener , KeyListener {
 	Font titleFont7;
 	Font titleFont8;
 	Font titleFont9;
-	ball cb;
+	Ball ball;
 	boolean moveUp;
-	camera c;
-	int by;
+	camera cam;
 	final int MENU_STATE = 0;
 
 	final int GAME_STATE = 1;
@@ -52,19 +51,19 @@ public class GamePanel extends JPanel implements ActionListener , KeyListener {
 			updateMenuState();
 
 		} else if (currentState == GAME_STATE) {
-			
+			if(ball.y >= 700) {
+				ball.gravity=0;
+			}
+			else {
+				ball.gravity = 2.5f;
+			}
 			if(moveUp) {
-				cb.speed = -5;
+				ball.speed = -15;
+				ball.y+= ball.speed;
 				
 			}
+			ball.y += ball.gravity;
 			
-			cb.update();
-			if ( by == 500) {
-		 cb.y = 650;
-			}
-			//if(cb.y <= c.y + 200) {
-			//	c.y +=cb.y + 200 - c.y;
-			//}
 			updateGameState();
 
 		} else if (currentState == END_STATE) {
@@ -114,10 +113,10 @@ System.out.println("test3");
 		titleFont7 = new Font("Impact", Font.PLAIN, 60);
 		titleFont8 = new Font("Comic Sans MS", Font.PLAIN, 20);
 		titleFont9 = new Font("Comic Sans MS", Font.PLAIN, 40);
-		  cb = new ball(300,700,50,50);
-			c = new camera(0,0);	
+		 ball = new Ball(300,700,50,50);
+			cam = new camera(0,0);	
 			
-by= 700-cb.y;
+
        
 
 
@@ -163,6 +162,7 @@ by= 700-cb.y;
 		// TODO Auto-generated method stub
 		if(e.getKeyCode()== KeyEvent.VK_UP) {
 moveUp =false;
+
 ;}
 	}
 
@@ -200,8 +200,8 @@ moveUp =false;
 }
 
 	public void drawGameState(Graphics g) {
-		this.setBackground(Color.BLACK);
-cb.draw(g,c);
+		this.setBackground(Color.yellow);
+ball.draw(g,cam);
 
 
 	
