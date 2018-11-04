@@ -6,9 +6,10 @@ import java.util.Random;
 
 public class Ball extends GameObject  {
 	float speed;
-	float gravity = 1f;
+	float gravity = 3f;
 int minY;
 Random rand = new Random ();
+
 
 	public void update() {
 		
@@ -18,8 +19,12 @@ Random rand = new Random ();
 		if(y >=650) {
 			y = 650;
 	}
-		minY= y;
+		if(y<minY) {
+			minY=y;
+		}
+	
 	}
+	
 
 	
 	 
@@ -45,11 +50,12 @@ Random rand = new Random ();
 		}
 		
 		g.fillOval(x + cam.x, y + cam.y, width, height);
-
+		g.setColor(Color.BLACK);
+g.drawOval(x + cam.x, y + cam.y, width, height);
 	}
 
 	public Ball(int x, int y, int width, int height) {
-		super(x, y, 50, 50,100);
+		super(x, y, 25, 25);
 
 		speed = 5;
 

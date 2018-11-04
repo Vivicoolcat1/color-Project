@@ -30,6 +30,7 @@ public class GamePanel extends JPanel implements ActionListener , KeyListener {
 	Ball ball;
 	boolean moveUp;
 	camera cam;
+	Boolean startOfGame;
 	final int MENU_STATE = 0;
 
 	final int GAME_STATE = 1;
@@ -51,20 +52,10 @@ public class GamePanel extends JPanel implements ActionListener , KeyListener {
 			updateMenuState();
 
 		} else if (currentState == GAME_STATE) {
-			if(ball.y >= 700) {
-				ball.gravity=0;
-			}
-			else {
-				ball.gravity = 2.5f;
-			}
-			if(moveUp) {
-				ball.speed = -15;
-				ball.y+= ball.speed;
-				
-			}
-			ball.y += ball.gravity;
 			
 			updateGameState();
+			
+			
 
 		} else if (currentState == END_STATE) {
 
@@ -113,9 +104,9 @@ System.out.println("test3");
 		titleFont7 = new Font("Impact", Font.PLAIN, 60);
 		titleFont8 = new Font("Comic Sans MS", Font.PLAIN, 20);
 		titleFont9 = new Font("Comic Sans MS", Font.PLAIN, 40);
-		 ball = new Ball(300,700,50,50);
+		 ball = new Ball(300,700,25,25);
 			cam = new camera(0,0);	
-			
+		ball.isAlive= true;
 
        
 
@@ -171,7 +162,28 @@ moveUp =false;
 	}
 
 	public void updateGameState() {
+		if(moveUp) {
+			ball.speed = -15;
+			ball.y+= ball.speed;
 			
+		}
+		ball.y += ball.gravity;
+	
+		
+		if(startOfGame) {
+			if(ball.y>650) {
+				ball.y = 650;
+			}
+			if(ball.y<-200) {
+				startOfGame = false;
+			}
+		}
+	 if(startOfGame = false && ball.y >650) {
+		 ball.isAlive = false;
+	 }
+		if(ball.isAlive = false){
+        currentState = END_STATE;
+		}
 	}
 
 	public void updateEndState() {
@@ -200,7 +212,7 @@ moveUp =false;
 }
 
 	public void drawGameState(Graphics g) {
-		this.setBackground(Color.yellow);
+		this.setBackground(Color.BLACK);
 ball.draw(g,cam);
 
 
