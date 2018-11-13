@@ -6,7 +6,7 @@ import java.util.Random;
 
 public class Ball extends GameObject  {
 	float speed;
-	float gravity = 3f;
+	float gravity = 2f;
 int minY;
 Random rand = new Random ();
 
@@ -16,9 +16,7 @@ Random rand = new Random ();
 		super.update();
 		speed += gravity;
 		y += speed;
-		if(y >=650) {
-			y = 650;
-	}
+		
 		if(y<minY) {
 			minY=y;
 		}

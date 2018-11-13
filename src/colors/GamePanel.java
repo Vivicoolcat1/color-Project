@@ -30,7 +30,8 @@ public class GamePanel extends JPanel implements ActionListener , KeyListener {
 	Ball ball;
 	boolean moveUp;
 	camera cam;
-	Boolean startOfGame;
+	 int startingY;
+	Boolean startOfGame = true;
 	final int MENU_STATE = 0;
 
 	final int GAME_STATE = 1;
@@ -107,7 +108,8 @@ System.out.println("test3");
 		 ball = new Ball(300,700,25,25);
 			cam = new camera(0,0);	
 		ball.isAlive= true;
-
+        startingY = 650;
+        		
        
 
 
@@ -163,7 +165,7 @@ moveUp =false;
 
 	public void updateGameState() {
 		if(moveUp) {
-			ball.speed = -15;
+			ball.speed = -7;
 			ball.y+= ball.speed;
 			
 		}
@@ -171,17 +173,23 @@ moveUp =false;
 	
 		
 		if(startOfGame) {
-			if(ball.y>650) {
-				ball.y = 650;
+			
+			if(ball.y>=startingY) {
+				ball.y= startingY;
+			
 			}
-			if(ball.y<-200) {
+			
+		
+			if(ball.y<200) {
 				startOfGame = false;
 			}
+		}else {
+			
 		}
-	 if(startOfGame = false && ball.y >650) {
+	 if(!startOfGame  && ball.y >startingY) {
 		 ball.isAlive = false;
 	 }
-		if(ball.isAlive = false){
+		if(!ball.isAlive ){
         currentState = END_STATE;
 		}
 	}
