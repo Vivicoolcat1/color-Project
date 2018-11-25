@@ -29,7 +29,7 @@ public class GamePanel extends JPanel implements ActionListener , KeyListener {
 	Font titleFont9;
 	Ball ball;
 	boolean moveUp;
-	camera cam;
+	static camera cam;
 	 int startingY;
 	Boolean startOfGame = true;
 	final int MENU_STATE = 0;
@@ -105,10 +105,10 @@ System.out.println("test3");
 		titleFont7 = new Font("Impact", Font.PLAIN, 60);
 		titleFont8 = new Font("Comic Sans MS", Font.PLAIN, 20);
 		titleFont9 = new Font("Comic Sans MS", Font.PLAIN, 40);
-		 ball = new Ball(300,700,25,25);
-			cam = new camera(0,0);	
+		 ball = new Ball(300,0,25,25);
+	cam = new camera(0,650);	
 		ball.isAlive= true;
-        startingY = 650;
+        startingY = 0;
         		
        
 
@@ -165,35 +165,35 @@ moveUp =false;
 
 	public void updateGameState() {
 		if(moveUp) {
-			ball.speed = -7;
-			ball.y+= ball.speed;
-			
+			ball.speed = -5;
+		
+			System.out.println("Test 5");
 		}
-		ball.y += ball.gravity;
+		
 	
 		
 		if(startOfGame) {
 			
-			if(ball.y>=startingY) {
+			if(ball.y >=startingY) {
 				ball.y= startingY;
 			
 			}
 			
 		
-			if(ball.y<200) {
+			if(ball.y + cam.y<-500) {
 				startOfGame = false;
 			}
 		}else {
 			
 		}
-	 if(!startOfGame  && ball.y >startingY) {
+	 if(!startOfGame  && ball.y  >startingY) {
 		 ball.isAlive = false;
 	 }
 		if(!ball.isAlive ){
         currentState = END_STATE;
 		}
+		ball.update();
 	}
-
 	public void updateEndState() {
 
 	}

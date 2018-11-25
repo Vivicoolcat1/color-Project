@@ -8,4 +8,5 @@ public class camera {
 		this. x = x;
 		this.y =y;
 	}
+	
 }
