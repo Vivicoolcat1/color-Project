@@ -30,16 +30,16 @@ public class GamePanel extends JPanel implements ActionListener , KeyListener {
 	Ball ball;
 	boolean moveUp;
 	static camera cam;
-	 int startingY;
-	Boolean startOfGame = true;
-	final int MENU_STATE = 0;
+	static final int startingY=0;
+	
+	static final int MENU_STATE = 0;
 
-	final int GAME_STATE = 1;
+	static final int GAME_STATE = 1;
 
-	final int END_STATE = 2;
+	static final int END_STATE = 2;
 
-	final int INSTRUCTION_STATE =3;
-	int currentState = MENU_STATE;
+	static final int INSTRUCTION_STATE =3;
+	static int currentState = MENU_STATE;
 	
 
 	@Override
@@ -56,8 +56,11 @@ public class GamePanel extends JPanel implements ActionListener , KeyListener {
 			
 			updateGameState();
 			
-			
-
+			System.out.println(ball.y);
+			System.out.println(startingY);
+			System.out.println(cam.y);
+System.out.println(ball.gravity);
+System.out.println(ball.speed);
 		} else if (currentState == END_STATE) {
 
 			updateEndState();
@@ -106,9 +109,9 @@ System.out.println("test3");
 		titleFont8 = new Font("Comic Sans MS", Font.PLAIN, 20);
 		titleFont9 = new Font("Comic Sans MS", Font.PLAIN, 40);
 		 ball = new Ball(300,0,25,25);
-	cam = new camera(0,650);	
+	 cam = new camera(0,650);	
 		ball.isAlive= true;
-        startingY = 0;
+	
         		
        
 
@@ -167,33 +170,13 @@ moveUp =false;
 		if(moveUp) {
 			ball.speed = -5;
 		
-			System.out.println("Test 5");
+			System.out.println("Test 5");}
+		ball.update();
 		}
 		
 	
 		
-		if(startOfGame) {
-			
-			if(ball.y >=startingY) {
-				ball.y= startingY;
-			
-			}
-			
 		
-			if(ball.y + cam.y<-500) {
-				startOfGame = false;
-			}
-		}else {
-			
-		}
-	 if(!startOfGame  && ball.y  >startingY) {
-		 ball.isAlive = false;
-	 }
-		if(!ball.isAlive ){
-        currentState = END_STATE;
-		}
-		ball.update();
-	}
 	public void updateEndState() {
 
 	}
