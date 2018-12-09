@@ -10,7 +10,8 @@ public class Ball extends GameObject {
 	int minY;
 	Random rand = new Random();
 	Boolean startOfGame = true;
-
+	Color c;
+	int rand2 =rand.nextInt(3);
 	public void update() {
 
 		super.update();
@@ -42,27 +43,33 @@ public class Ball extends GameObject {
 			GamePanel.currentState = GamePanel.END_STATE;
 		}
 		
+	
+	
+	
+	
+	if (rand2== 0) {
+	c.equals(Color.YELLOW);
+
+	} else if (rand2 ==1) {
+		c.equals(Color.BLUE);
+
+	} else if (rand2==2) {
+		c.equals(Color.RED);
+
+	} else {
+		c.equals(Color.GREEN);
+	}
 	}
 
-	public void draw(Graphics g, camera cam) {
-		rand.nextInt(3);
-		if (rand.equals(0)) {
-			g.setColor(Color.YELLOW);
-
-		} else if (rand.equals(1)) {
-			g.setColor(Color.BLUE);
-
-		} else if (rand.equals(2)) {
-			g.setColor(Color.RED);
-
-		} else {
-			g.setColor(Color.GREEN);
-
-		}
-
+	
+	
+	public void draw(Graphics g, camera cam) {	
+	
+g.setColor(c);
 		g.fillOval(x + cam.x, y + cam.y, width, height);
 		g.setColor(Color.BLACK);
 		g.drawOval(x + cam.x, y + cam.y, width, height);
+		g.setColor(c);
 	}
 
 	public Ball(int x, int y, int width, int height) {

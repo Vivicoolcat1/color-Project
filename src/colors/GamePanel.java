@@ -28,6 +28,7 @@ public class GamePanel extends JPanel implements ActionListener , KeyListener {
 	Font titleFont8;
 	Font titleFont9;
 	Ball ball;
+	Obsticle ob;
 	boolean moveUp;
 	static camera cam;
 	static final int startingY=0;
@@ -112,7 +113,7 @@ System.out.println("test3");
 	 cam = new camera(0,650);	
 		ball.isAlive= true;
 	
-        		
+        		ob= new Obsticle (300,200,100,50);
        
 
 
@@ -205,7 +206,7 @@ moveUp =false;
 	public void drawGameState(Graphics g) {
 		this.setBackground(Color.BLACK);
 ball.draw(g,cam);
-
+ob.draw(g,cam);
 
 	
 	}
@@ -235,7 +236,7 @@ public void drawInstructionState (Graphics g) {
 	g.drawString("The object of the game is to get points as you can." , 50, 400);
 	g.drawString("1 star = 1 point. There is a catch though, ", 50, 440);
 	g.drawString("you have to be the same color as the thing you are going through or else you DIE!", 50, 480);
-	g.drawString("To fly press the up arrow key DONT hold it you will fall.", 50, 520);
+	g.drawString("To fly press the up arrow key .", 50, 520);
 	g.drawString("GOOD LUCK! ;D", 50, 560);
 	g.setFont(titleFont9);
 	g.setColor(Color.WHITE);
