@@ -11,7 +11,7 @@ public class Ball extends GameObject {
 	Random rand = new Random();
 	Boolean startOfGame = true;
 	Color c;
-	int rand2 =rand.nextInt(3);
+	int rand2 ;
 	public void update() {
 
 		super.update();
@@ -47,18 +47,6 @@ public class Ball extends GameObject {
 	
 	
 	
-	if (rand2== 0) {
-	c.equals(Color.YELLOW);
-
-	} else if (rand2 ==1) {
-		c.equals(Color.BLUE);
-
-	} else if (rand2==2) {
-		c.equals(Color.RED);
-
-	} else {
-		c.equals(Color.GREEN);
-	}
 	}
 
 	
@@ -74,8 +62,20 @@ g.setColor(c);
 
 	public Ball(int x, int y, int width, int height) {
 		super(x, y, 25, 25);
-
+		rand2 =rand.nextInt(3);
 		speed = -5;
+		if (rand2== 0) {
+			c=(Color.YELLOW);
+
+			} else if (rand2 ==1) {
+				c=(Color.BLUE);
+
+			} else if (rand2==2) {
+				c=(Color.RED);
+
+			} else {
+				c=(Color.GREEN);
+			}
 
 	}
 
