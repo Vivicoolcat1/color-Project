@@ -6,11 +6,11 @@ import java.util.Iterator;
 
 
 
-public class ObjectManager  {
+public class ObjectManager {
 	ArrayList<Obsticle> obs = new ArrayList<Obsticle>();
 	Obsticle ob;
-public ObjectManager(Obsticle o) {
-	ob= new Obsticle(ob.width,ob.height,ob.x,ob.y);
+public ObjectManager(Ball b) {
+	
 }
 public void draw (Graphics g, camera cam){
 

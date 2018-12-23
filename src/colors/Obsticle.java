@@ -4,7 +4,7 @@ import java.awt.Color;
 import java.awt.Graphics;
 import java.util.Random;
 
-public class Obsticle extends GameObject {
+public class Obsticle extends GameObject  {
 	Random rand = new Random();
 	Color c;
 	int rand2 ;
