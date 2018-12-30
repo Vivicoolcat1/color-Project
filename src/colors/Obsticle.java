@@ -4,43 +4,63 @@ import java.awt.Color;
 import java.awt.Graphics;
 import java.util.Random;
 
-public class Obsticle extends GameObject  {
-	Random rand = new Random();
-	Color c;
-	int rand2 ;
+public class Obsticle   {
+
+	BarPieces a ;
+	BarPieces b;
+	BarPieces c ;
+	BarPieces d ;
+	BarPieces e;
+		int x;
+		int y;
+		public Obsticle(int x, int y) {
+			this.x=x;
+			this.y =y;
+			a	= new BarPieces(5,x, y, 200, 20);
+			e = new BarPieces(a.speed,x-a.width,a.y,a.width,  a.height);
 	
-		
-		public Obsticle(int x, int y, int width, int height) {
-			super(x,y,width,height);
-			rand2 =rand.nextInt(3);
-			if (rand2==0) {
-				c=(Color.YELLOW);
-
-			} else if (rand2==1) {
-				c=(Color.BLUE);
-
-			} else if (rand2==2) {
-				c=(Color.RED);
-
-			} else {
-				c=(Color.GREEN);}
-
+				b= new BarPieces(a.speed,a.x + a.width, a.y,a.width, a.height);
+		c= new BarPieces(a.speed,b.x + a.width, b.y, a.width,  a.height);
+		d = new BarPieces(a.speed,c.x + a.width, c.y,a.width,  a.height);
 		}
 		
 
 		
 		 
 	public void draw(Graphics g, camera cam) {
+		a.draw(g,cam);
+		b.draw(g,cam);
+		c.draw(g,cam);
+		d.draw(g, cam);
+		e.draw(g,cam);
+
+	}
+	public void update() {
+	a.update();
+	b.update();
+	c.update();
+	d.update();
+	e.update();
+	if( a.x+a.width==colorMatch.WIDTH) {
+		b.x=0-b.width;
 		
-g.setColor(c);
-		g.fillRect(x + cam.x, -y + cam.y , width, height);
-		g.setColor(Color.BLACK);
-		g.drawRect(x + cam.x, -y + cam.y, width, height);
-		System.out.println(cam.x);
-	    System.out.println(cam.y);
-	    System.out.println(x);
-	    System.out.println(y);
-	}}
+	}
+	if( b.x+b.width==colorMatch.WIDTH) {
+		c.x=0-c.width;
+		
+	}
+	if( c.x+c.width==colorMatch.WIDTH) {
+		d.x=0-d.width;
+		
+	}
+	if( d.x+d.width==colorMatch.WIDTH) {
+		e.x=0-e.width;
+		
+	}if( e.x+e.width==colorMatch.WIDTH) {
+		a.x=0-a.width;
+		
+	}
+}}
 
 	
 	

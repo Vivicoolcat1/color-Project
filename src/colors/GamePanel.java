@@ -25,12 +25,9 @@ public class GamePanel extends JPanel implements ActionListener, KeyListener {
 	Font titleFont7;
 	Font titleFont8;
 	Font titleFont9;
-	Ball ball  = new Ball(300, 0, 25, 25);
+	Ball ball  = new Ball( -5,300, 0, 25, 25);
 	ObjectManager om  = new ObjectManager(ball);
-	Obsticle ob;
-	Obsticle ob2;
-	Obsticle ob3;
-	Obsticle ob4;
+	Obsticle ob ;
 	boolean moveUp;
 	static camera cam;
 	static final int startingY = 0;
@@ -108,11 +105,8 @@ public class GamePanel extends JPanel implements ActionListener, KeyListener {
 		titleFont9 = new Font("Comic Sans MS", Font.PLAIN, 40);
 		cam = new camera(0, 650);
 		ball.isAlive = true;
+		ob = new Obsticle(0,200);
 		
-		ob = new Obsticle(0, 200, 200, 20);
-		ob2 = new Obsticle(ob.x + ob.width, ob.y, ob.width, 20);
-		ob3 = new Obsticle(ob2.x + ob.width, ob.y, ob2.width, 20);
-		ob4 = new Obsticle(ob3.x + ob.width, ob.y, ob3.width, 20);
 		}
 
 	public void startGame() {
@@ -169,12 +163,8 @@ public class GamePanel extends JPanel implements ActionListener, KeyListener {
 			System.out.println("Test 5");
 		}
 		ball.update();
-		
+		ob.update();
 			
-		om.obs.add(ob);
-		om.obs.add(ob2);
-		om.obs.add(ob3);
-		om.obs.add(ob4);
 		
 	}
 

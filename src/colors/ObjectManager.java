@@ -18,10 +18,12 @@ for (Obsticle obsticle : obs) {
 	obsticle.draw(g,cam);
 }
 }
-	public void purgeObjects() {
-		for (int i = 0; i < obs.size(); i++) {
-			if (obs.get(i).isAlive == false) {
-				obs.remove(i);
+	//public void purgeObjects() {
+		//for (int i = 0; i < obs.size(); i++) {
+		//	if (obs.get(i).isAlive == false) {
+		//		obs.remove(i);
 
+//}
+		//}
+//}
 }
-		}}}
