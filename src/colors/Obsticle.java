@@ -11,6 +11,7 @@ public class Obsticle   {
 	BarPieces c ;
 	BarPieces d ;
 	BarPieces e;
+	
 		int x;
 		int y;
 		public Obsticle(int x, int y) {
@@ -22,6 +23,7 @@ public class Obsticle   {
 				b= new BarPieces(a.speed,a.x + a.width, a.y,a.width, a.height);
 		c= new BarPieces(a.speed,b.x + a.width, b.y, a.width,  a.height);
 		d = new BarPieces(a.speed,c.x + a.width, c.y,a.width,  a.height);
+		
 		}
 		
 
@@ -41,6 +43,7 @@ public class Obsticle   {
 	c.update();
 	d.update();
 	e.update();
+	
 	if( a.x+a.width==colorMatch.WIDTH) {
 		b.x=0-b.width;
 		

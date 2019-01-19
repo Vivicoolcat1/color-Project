@@ -27,7 +27,9 @@ public class GamePanel extends JPanel implements ActionListener, KeyListener {
 	Font titleFont9;
 	Ball ball  = new Ball( -5,300, 0, 25, 25);
 	ObjectManager om  = new ObjectManager(ball);
-	Obsticle ob ;
+	Allobsticles ao;
+	
+	
 	boolean moveUp;
 	static camera cam;
 	static final int startingY = 0;
@@ -60,6 +62,7 @@ public class GamePanel extends JPanel implements ActionListener, KeyListener {
 			System.out.println(cam.y);
 			System.out.println(ball.gravity);
 			System.out.println(ball.speed);
+			
 		} else if (currentState == END_STATE) {
 
 			updateEndState();
@@ -105,7 +108,8 @@ public class GamePanel extends JPanel implements ActionListener, KeyListener {
 		titleFont9 = new Font("Comic Sans MS", Font.PLAIN, 40);
 		cam = new camera(0, 650);
 		ball.isAlive = true;
-		ob = new Obsticle(0,200);
+		ao = new Allobsticles(200);
+		ball.ao = ao;
 		
 		}
 
@@ -163,8 +167,11 @@ public class GamePanel extends JPanel implements ActionListener, KeyListener {
 			System.out.println("Test 5");
 		}
 		ball.update();
-		ob.update();
-			
+		ao.update();
+			for (int i = 1; i < 11; i++) {
+				//if(ball.c == ao.)
+				
+			}
 		
 	}
 
@@ -197,9 +204,9 @@ public class GamePanel extends JPanel implements ActionListener, KeyListener {
 	public void drawGameState(Graphics g) {
 		this.setBackground(Color.BLACK);
 ball.draw(g,cam);
-ob.draw(g,cam);
+ao.draw(g,cam);
 
-om.draw(g, cam);
+//om.draw(g, cam);
 	
 	}
 
@@ -226,14 +233,15 @@ om.draw(g, cam);
 		g.drawString("INSTRUCTIONS", 50, 200);
 		g.setFont(titleFont8);
 		g.setColor(Color.WHITE);
-		g.drawString("The object of the game is to get points as you can.", 50, 400);
-		g.drawString("1 star = 1 point. There is a catch though, ", 50, 440);
-		g.drawString("you have to be the same color as the thing you are going through or else you DIE!", 50, 480);
-		g.drawString("To fly press the up arrow key .", 50, 520);
-		g.drawString("GOOD LUCK! ;D", 50, 560);
+		g.drawString("The object of the game is too get through all the obsticles with out dying.", 50, 400);
+		g.drawString("If you succed then you will be the ultimate winner!", 50, 440);
+		g.drawString("To get through the obsticle you have to be the same color as the obsticle ", 50, 480);
+		g.drawString("or else you DIE!", 50, 520);
+		g.drawString("To fly press the up arrow key .", 50, 560);
+		g.drawString("GOOD LUCK! ;D", 50, 600);
 		g.setFont(titleFont9);
 		g.setColor(Color.WHITE);
-		g.drawString("Press ENTER to go back to the menu", 50, 700);
+		g.drawString("Press ENTER to go back to the menu", 50, 720);
 
 	}
 

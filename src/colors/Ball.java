@@ -12,12 +12,19 @@ public class Ball extends GameObject {
 	Boolean startOfGame = true;
 	Color c;
 	int rand2 ;
+	Allobsticles ao;
 	public void update() {
 
 		super.update();
 		speed += gravity;
 		y += speed;
-
+for (Obsticle obsticle : ao.obsticles) {
+	if(obsticle.a.collisionBox.intersects(this.collisionBox)) {
+		if(!obsticle.a.c.equals(this.c)) {
+			GamePanel.currentState =GamePanel.END_STATE;
+		}
+	}
+}
 		if (y < minY && y < -500) {
 			minY = y;
 			GamePanel.cam.y = y * -1 + 200;
