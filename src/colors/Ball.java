@@ -5,26 +5,54 @@ import java.awt.Graphics;
 import java.util.Random;
 
 public class Ball extends GameObject {
-	float speed =-5;
+	float speed = -5;
 	float gravity = .3f;
 	int minY;
 	Random rand = new Random();
 	Boolean startOfGame = true;
 	Color c;
-	int rand2 ;
+	int rand2;
 	Allobsticles ao;
-	public void update() {
 
+	public void update() {
+		System.out.println("Cb =" + this.collisionBox);
+		System.out.println(this.c);
 		super.update();
 		speed += gravity;
 		y += speed;
-for (Obsticle obsticle : ao.obsticles) {
-	if(obsticle.a.collisionBox.intersects(this.collisionBox)) {
-		if(!obsticle.a.c.equals(this.c)) {
-			GamePanel.currentState =GamePanel.END_STATE;
+		for (Obsticle obsticle : ao.obsticles) {
+			if (obsticle.a.collisionBox.intersects(this.collisionBox)) {
+				System.out.println("COLLISION");
+				if (!obsticle.a.c.equals(this.c)) {
+					GamePanel.currentState = GamePanel.END_STATE;
+				}
+			}
+			if (obsticle.b.collisionBox.intersects(this.collisionBox)) {
+				System.out.println("COLLISION");
+				if (!obsticle.b.c.equals(this.c)) {
+					GamePanel.currentState = GamePanel.END_STATE;
+				}
+			}
+			if (obsticle.c.collisionBox.intersects(this.collisionBox)) {
+				System.out.println("COLLISION");
+				if (!obsticle.c.c.equals(this.c)) {
+					GamePanel.currentState = GamePanel.END_STATE;
+				}
+			}
+			if (obsticle.d.collisionBox.intersects(this.collisionBox)) {
+				System.out.println("COLLISION");
+				if (!obsticle.d.c.equals(this.c)) {
+					GamePanel.currentState = GamePanel.END_STATE;
+				}
+			}
+			if (obsticle.e.collisionBox.intersects(this.collisionBox)) {
+				System.out.println("COLLISION");
+				if (!obsticle.e.c.equals(this.c)) {
+					GamePanel.currentState = GamePanel.END_STATE;
+				}
+			}
 		}
-	}
-}
+
 		if (y < minY && y < -500) {
 			minY = y;
 			GamePanel.cam.y = y * -1 + 200;
@@ -41,48 +69,45 @@ for (Obsticle obsticle : ao.obsticles) {
 
 			}
 		} else {
+			{
 
+				if (!startOfGame && y > GamePanel.startingY) {
+					isAlive = false;
+				}
+				if (!isAlive) {
+					GamePanel.currentState = GamePanel.END_STATE;
+				}
+
+			}
 		}
-		if (!startOfGame && y > GamePanel.startingY) {
-			isAlive = false;
-		}
-		if (!isAlive) {
-			GamePanel.currentState = GamePanel.END_STATE;
-		}
-		
-	
-	
-	
-	
 	}
 
-	
-	
-	public void draw(Graphics g, camera cam) {	
-	
-g.setColor(c);
+	public void draw(Graphics g, camera cam) {
+
+		g.setColor(c);
 		g.fillOval(x + cam.x, y + cam.y, width, height);
 		g.setColor(Color.BLACK);
 		g.drawOval(x + cam.x, y + cam.y, width, height);
 		g.setColor(c);
 	}
 
-	public Ball(float speed,int x, int y, int width, int height) {
-		super(speed,x, y, 25, 25);
-		rand2 =rand.nextInt(3);
+	public Ball(float speed, int x, int y, int width, int height) {
+
+		super(speed, x, y, 25, 25);
+		rand2 = rand.nextInt(3);
 		speed = -5;
-		if (rand2== 0) {
-			c=(Color.YELLOW);
+		if (rand2 == 0) {
+			c = (Color.YELLOW);
 
-			} else if (rand2 ==1) {
-				c=(Color.BLUE);
+		} else if (rand2 == 1) {
+			c = (Color.BLUE);
 
-			} else if (rand2==2) {
-				c=(Color.RED);
+		} else if (rand2 == 2) {
+			c = (Color.RED);
 
-			} else {
-				c=(Color.GREEN);
-			}
+		} else {
+			c = (Color.GREEN);
+		}
 
 	}
 

@@ -12,6 +12,7 @@ public class BarPieces extends GameObject  {
 	
 public  BarPieces(float speed, int x, int y, int height, int width ) {
 	super(speed,x,y,height,width);
+	this.collisionBox.setBounds(x, y, width, height);
 	
 	rand2 =rand.nextInt(3);
 	if (rand2==0) {
@@ -30,6 +31,8 @@ public  BarPieces(float speed, int x, int y, int height, int width ) {
 
 	public void update() {
 		x += speed;
+		System.out.println("CB 2 = " + this.collisionBox);
+		System.out.println(this.c);
 	}
 	
 	public void draw(Graphics g, camera cam) {
