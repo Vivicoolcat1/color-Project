@@ -15,11 +15,15 @@ public class Ball extends GameObject {
 	Allobsticles ao;
 
 	public void update() {
+
 		System.out.println("Cb =" + this.collisionBox);
 		System.out.println(this.c);
 		super.update();
 		speed += gravity;
 		y += speed;
+		if(GamePanel.bar.collisionBox.intersects(this.collisionBox)) {
+			System.out.println("COLLISION");
+		}
 		for (Obsticle obsticle : ao.obsticles) {
 			if (obsticle.a.collisionBox.intersects(this.collisionBox)) {
 				System.out.println("COLLISION");
@@ -92,8 +96,9 @@ public class Ball extends GameObject {
 	}
 
 	public Ball(float speed, int x, int y, int width, int height) {
-
+		
 		super(speed, x, y, 25, 25);
+		
 		rand2 = rand.nextInt(3);
 		speed = -5;
 		if (rand2 == 0) {
