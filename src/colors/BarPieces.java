@@ -12,7 +12,7 @@ public class BarPieces extends GameObject  {
 	
 public  BarPieces(float speed, int x, int y, int height, int width ) {
 	super(speed,x,y,height,width);
-	this.collisionBox.setBounds(x, y, width, height);
+	
 	
 	rand2 =rand.nextInt(3);
 	if (rand2==0) {
@@ -30,20 +30,23 @@ public  BarPieces(float speed, int x, int y, int height, int width ) {
 
 
 	public void update() {
+		super.update();
 		x += speed;
 		System.out.println("CB 2 = " + this.collisionBox);
 		System.out.println(this.c);
 	}
 	
-	public void draw(Graphics g, camera cam) {
+	public void draw(Graphics g) {
+		
 		g.setColor(c);
-		g.fillRect(x + cam.x, -y + cam.y , width, height);
+		g.fillRect(x + GamePanel.cam.x, -y + GamePanel.cam.y , width, height);
 		g.setColor(Color.BLACK);
-		g.drawRect(x + cam.x, -y + cam.y, width, height);
-		System.out.println(cam.x);
-	    System.out.println(cam.y);
+		g.drawRect(x + GamePanel.cam.x, -y + GamePanel.cam.y, width, height);
+		System.out.println(GamePanel.cam.x);
+	    System.out.println(GamePanel.cam.y);
 	    System.out.println(x);
 	    System.out.println(y);
+	    super.draw(g);
 	}
 	
 	

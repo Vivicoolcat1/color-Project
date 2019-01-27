@@ -28,7 +28,7 @@ public class GamePanel extends JPanel implements ActionListener, KeyListener {
 	Ball ball  = new Ball( -5,300, 0, 25, 25);
 	ObjectManager om  = new ObjectManager(ball);
 	Allobsticles ao;
-	static BarPieces bar;
+	
 	
 	boolean moveUp;
 	static camera cam;
@@ -108,9 +108,9 @@ public class GamePanel extends JPanel implements ActionListener, KeyListener {
 		titleFont9 = new Font("Comic Sans MS", Font.PLAIN, 40);
 		cam = new camera(0, 650);
 		ball.isAlive = true;
-		ao = new Allobsticles(200);
+		ao = new Allobsticles(250);
 		ball.ao = ao;
-		bar = new BarPieces(0,200,100, 250,10);
+		
 		}
 
 	public void startGame() {
@@ -168,11 +168,8 @@ public class GamePanel extends JPanel implements ActionListener, KeyListener {
 		}
 		ball.update();
 		ao.update();
-		bar.update();
-			for (int i = 1; i < 11; i++) {
-				//if(ball.c == ao.)
-				
-			}
+		
+			
 		
 	}
 
@@ -204,10 +201,10 @@ public class GamePanel extends JPanel implements ActionListener, KeyListener {
 
 	public void drawGameState(Graphics g) {
 		this.setBackground(Color.BLACK);
-ball.draw(g,cam);
-ao.draw(g,cam);
+ball.draw(g);
+ao.draw(g);
 
-bar.draw(g,cam);
+
 	
 	}
 

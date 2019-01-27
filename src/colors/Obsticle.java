@@ -17,7 +17,7 @@ public class Obsticle   {
 		public Obsticle(int x, int y) {
 			this.x=x;
 			this.y =y;
-			a	= new BarPieces(5,x, y, 200, 20);
+			a	= new BarPieces(5,x, y-2500, 200, 20);
 			e = new BarPieces(a.speed,x-a.width,a.y,a.width,  a.height);
 	
 				b= new BarPieces(a.speed,a.x + a.width, a.y,a.width, a.height);
@@ -29,12 +29,12 @@ public class Obsticle   {
 
 		
 		 
-	public void draw(Graphics g, camera cam) {
-		a.draw(g,cam);
-		b.draw(g,cam);
-		c.draw(g,cam);
-		d.draw(g, cam);
-		e.draw(g,cam);
+	public void draw(Graphics g) {
+		a.draw(g);
+		b.draw(g);
+		c.draw(g);
+		d.draw(g);
+		e.draw(g);
 
 	}
 	public void update() {

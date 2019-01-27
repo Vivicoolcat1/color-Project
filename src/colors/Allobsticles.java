@@ -17,9 +17,9 @@ public class Allobsticles {
 
 	}
 
-	void draw(Graphics g, camera cam) {
+	void draw(Graphics g) {
 		for (Obsticle obsticle : obsticles) {
-			obsticle.draw(g, cam);
+			obsticle.draw(g);
 		}
 	}
 

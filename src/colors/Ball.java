@@ -1,3 +1,5 @@
+
+
 package colors;
 
 import java.awt.Color;
@@ -21,14 +23,14 @@ public class Ball extends GameObject {
 		super.update();
 		speed += gravity;
 		y += speed;
-		if(GamePanel.bar.collisionBox.intersects(this.collisionBox)) {
-			System.out.println("COLLISION");
-		}
+		
+		
 		for (Obsticle obsticle : ao.obsticles) {
 			if (obsticle.a.collisionBox.intersects(this.collisionBox)) {
 				System.out.println("COLLISION");
 				if (!obsticle.a.c.equals(this.c)) {
 					GamePanel.currentState = GamePanel.END_STATE;
+				
 				}
 			}
 			if (obsticle.b.collisionBox.intersects(this.collisionBox)) {
@@ -86,13 +88,14 @@ public class Ball extends GameObject {
 		}
 	}
 
-	public void draw(Graphics g, camera cam) {
+	public void draw(Graphics g) {
 
 		g.setColor(c);
-		g.fillOval(x + cam.x, y + cam.y, width, height);
+		g.fillOval(x + GamePanel.cam.x, y + GamePanel.cam.y, width, height);
 		g.setColor(Color.BLACK);
-		g.drawOval(x + cam.x, y + cam.y, width, height);
+		g.drawOval(x + GamePanel.cam.x, y + GamePanel.cam.y, width, height);
 		g.setColor(c);
+		super.draw(g);
 	}
 
 	public Ball(float speed, int x, int y, int width, int height) {

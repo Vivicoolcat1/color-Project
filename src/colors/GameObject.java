@@ -1,5 +1,6 @@
 package colors;
 
+import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.Rectangle;
 
@@ -23,11 +24,13 @@ collisionBox = new Rectangle();
 	}
 
 	public void update() {
-		collisionBox.setBounds(x, y, width, height);
+		collisionBox.setBounds(x +GamePanel.cam.x , y + GamePanel.cam.y, width, height);
+		
 	}
 
 	public void draw(Graphics g) {
-
+		g.setColor(Color.WHITE);
+		g.drawRect(x + GamePanel.cam.x, y + GamePanel.cam.y, width, height);
 	}
 
 }
