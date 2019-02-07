@@ -31,6 +31,7 @@ collisionBox = new Rectangle();
 	public void draw(Graphics g) {
 		g.setColor(Color.WHITE);
 		g.drawRect(x + GamePanel.cam.x, y + GamePanel.cam.y, width, height);
+		
 	}
 
 }

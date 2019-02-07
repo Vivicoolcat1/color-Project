@@ -6,12 +6,14 @@ public class Allobsticles {
 	Obsticle[] obsticles;
 	int y;
 	int Space = 200;
+	
 
 	Allobsticles(int y) {
 		this.y = y;
+	
 		obsticles = new Obsticle[10];
 		for (int i = 0; i < obsticles.length; i++) {
-			obsticles[i] = new Obsticle(0, y + Space * i);
+			obsticles[i] = new Obsticle(2 *i,0, y + Space * i);
 
 		}
 

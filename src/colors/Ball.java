@@ -102,7 +102,7 @@ public class Ball extends GameObject {
 		
 		super(speed, x, y, 25, 25);
 		
-		rand2 = rand.nextInt(3);
+		rand2 = rand.nextInt(4);
 		speed = -5;
 		if (rand2 == 0) {
 			c = (Color.YELLOW);
@@ -113,9 +113,13 @@ public class Ball extends GameObject {
 		} else if (rand2 == 2) {
 			c = (Color.RED);
 
-		} else {
+		} else if (rand2 ==3){
 			c = (Color.GREEN);
 		}
+		else {
+			c = (Color.MAGENTA);
+		}
+		
 
 	}
 

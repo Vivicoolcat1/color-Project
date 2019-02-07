@@ -108,7 +108,7 @@ public class GamePanel extends JPanel implements ActionListener, KeyListener {
 		titleFont9 = new Font("Comic Sans MS", Font.PLAIN, 40);
 		cam = new camera(0, 650);
 		ball.isAlive = true;
-		ao = new Allobsticles(250);
+		ao = new Allobsticles(350);
 		ball.ao = ao;
 		
 		}
@@ -127,6 +127,11 @@ public class GamePanel extends JPanel implements ActionListener, KeyListener {
 	public void keyPressed(KeyEvent e) {
 		// TODO Auto-generated method stub
 		if (e.getKeyCode() == KeyEvent.VK_ENTER && currentState == MENU_STATE) {
+			ball  = new Ball( -5,300, 0, 25, 25);
+			cam = new camera(0, 650);
+			ball.isAlive = true;
+			ao = new Allobsticles(350);
+			ball.ao = ao;
 			currentState = GAME_STATE;
 		} else if (e.getKeyCode() == KeyEvent.VK_ENTER && currentState == GAME_STATE) {
 			currentState = END_STATE;
