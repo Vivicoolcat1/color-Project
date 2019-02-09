@@ -28,7 +28,7 @@ public class GamePanel extends JPanel implements ActionListener, KeyListener {
 	Ball ball  = new Ball( -5,300, 0, 25, 25);
 	ObjectManager om  = new ObjectManager(ball);
 	Allobsticles ao;
-	
+	 static youWin finish;
 	
 	boolean moveUp;
 	static camera cam;
@@ -72,7 +72,12 @@ public class GamePanel extends JPanel implements ActionListener, KeyListener {
 		}
 
 	}
-
+	public static void moveCamera (int y) {
+		cam.y = y * -1 + 200;
+		
+			System.out.println("camera y " + cam.y);
+		
+	}
 	@Override
 
 	public void paintComponent(Graphics g) {
@@ -110,7 +115,7 @@ public class GamePanel extends JPanel implements ActionListener, KeyListener {
 		ball.isAlive = true;
 		ao = new Allobsticles(350);
 		ball.ao = ao;
-		
+		 finish = new youWin(0,0 ,2300 ,20,800);
 		}
 
 	public void startGame() {
@@ -166,6 +171,8 @@ public class GamePanel extends JPanel implements ActionListener, KeyListener {
 	}
 
 	public void updateGameState() {
+		System.out.println("YW y" + finish.y  + " " + finish.x);
+		
 		if (moveUp) {
 			ball.speed = -5;
 
@@ -173,7 +180,7 @@ public class GamePanel extends JPanel implements ActionListener, KeyListener {
 		}
 		ball.update();
 		ao.update();
-		
+		finish.update();
 			
 		
 	}
@@ -208,7 +215,7 @@ public class GamePanel extends JPanel implements ActionListener, KeyListener {
 		this.setBackground(Color.BLACK);
 ball.draw(g);
 ao.draw(g);
-
+finish.draw(g);
 
 	
 	}

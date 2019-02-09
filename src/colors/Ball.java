@@ -26,6 +26,7 @@ public class Ball extends GameObject {
 		
 		
 		for (Obsticle obsticle : ao.obsticles) {
+			
 			if (obsticle.a.collisionBox.intersects(this.collisionBox)) {
 				System.out.println("COLLISION");
 				if (!obsticle.a.c.equals(this.c)) {
@@ -57,11 +58,14 @@ public class Ball extends GameObject {
 					GamePanel.currentState = GamePanel.END_STATE;
 				}
 			}
+		
 		}
-
+if(GamePanel.finish.collisionBox.intersects(this.collisionBox)) {
+	System.out.println("They hit");
+}
 		if (y < minY && y < -500) {
 			minY = y;
-			GamePanel.cam.y = y * -1 + 200;
+			GamePanel.moveCamera(y);
 		}
 		if (startOfGame) {
 
