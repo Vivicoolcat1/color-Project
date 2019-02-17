@@ -25,10 +25,13 @@ public class GamePanel extends JPanel implements ActionListener, KeyListener {
 	Font titleFont7;
 	Font titleFont8;
 	Font titleFont9;
+	Font titleFont10;
+	Font titleFont11;
+	
 	Ball ball  = new Ball( -5,300, 0, 25, 25);
 	ObjectManager om  = new ObjectManager(ball);
 	Allobsticles ao;
-	 static youWin finish;
+	  static youWin finish;
 	
 	boolean moveUp;
 	static camera cam;
@@ -41,6 +44,8 @@ public class GamePanel extends JPanel implements ActionListener, KeyListener {
 	static final int END_STATE = 2;
 
 	static final int INSTRUCTION_STATE = 3;
+	
+	static final int YOUWIN_STATE=4;
 	static int currentState = MENU_STATE;
 
 	@Override
@@ -70,7 +75,8 @@ public class GamePanel extends JPanel implements ActionListener, KeyListener {
 		} else if (currentState == INSTRUCTION_STATE) {
 			updateInstructionState();
 		}
-
+	else if (currentState == YOUWIN_STATE) {
+		updateYouWinState();}
 	}
 	public static void moveCamera (int y) {
 		cam.y = y * -1 + 200;
@@ -97,7 +103,9 @@ public class GamePanel extends JPanel implements ActionListener, KeyListener {
 		} else if (currentState == INSTRUCTION_STATE) {
 			drawInstructionState(g);
 		}
-
+		else if (currentState == YOUWIN_STATE) {
+			drawYouWinState(g);
+		}
 	}
 
 	public GamePanel() {
@@ -111,11 +119,14 @@ public class GamePanel extends JPanel implements ActionListener, KeyListener {
 		titleFont7 = new Font("Impact", Font.PLAIN, 60);
 		titleFont8 = new Font("Comic Sans MS", Font.PLAIN, 20);
 		titleFont9 = new Font("Comic Sans MS", Font.PLAIN, 40);
+		titleFont10 = new Font("Impact", Font.PLAIN, 40);
+		titleFont11 = new Font("Comic Sans MS", Font.PLAIN, 30);
+		
 		cam = new camera(0, 650);
 		ball.isAlive = true;
 		ao = new Allobsticles(350);
 		ball.ao = ao;
-		 finish = new youWin(0,0 ,2300 ,20,800);
+		 finish = new youWin(0 ,2300 ,800,20);
 		}
 
 	public void startGame() {
@@ -150,6 +161,9 @@ public class GamePanel extends JPanel implements ActionListener, KeyListener {
 			currentState = MENU_STATE;
 
 		}
+		else if(e.getKeyCode() == KeyEvent.VK_ENTER && currentState == YOUWIN_STATE) {
+			currentState = MENU_STATE;
+		}
 		if (e.getKeyCode() == KeyEvent.VK_UP) {
 			moveUp = true;
 
@@ -171,7 +185,7 @@ public class GamePanel extends JPanel implements ActionListener, KeyListener {
 	}
 
 	public void updateGameState() {
-		System.out.println("YW y" + finish.y  + " " + finish.x);
+		
 		
 		if (moveUp) {
 			ball.speed = -5;
@@ -191,6 +205,9 @@ public class GamePanel extends JPanel implements ActionListener, KeyListener {
 
 	public void updateInstructionState() {
 
+	}
+	public void updateYouWinState() {
+		
 	}
 
 	public void drawMenuState(Graphics g) {
@@ -212,7 +229,7 @@ public class GamePanel extends JPanel implements ActionListener, KeyListener {
 	}
 
 	public void drawGameState(Graphics g) {
-		this.setBackground(Color.BLACK);
+this.setBackground(Color.BLACK);
 ball.draw(g);
 ao.draw(g);
 finish.draw(g);
@@ -227,9 +244,8 @@ finish.draw(g);
 		g.setFont(titleFont4);
 		g.setColor(Color.WHITE);
 		g.drawString("You Died! ¯\\_(ツ)_/¯", 50, 200);
-		g.setFont(titleFont5);
-		g.setColor(Color.WHITE);
-		g.drawString("your score is ", 50, 400);
+		
+		
 		g.setFont(titleFont6);
 		g.setColor(Color.WHITE);
 		g.drawString("Press ENTER to restart", 50, 600);
@@ -253,6 +269,16 @@ finish.draw(g);
 		g.setColor(Color.WHITE);
 		g.drawString("Press ENTER to go back to the menu", 50, 720);
 
+	}
+	public void drawYouWinState(Graphics g) {
+		this.setBackground(Color.pink);
+		g.fillRect(0, 0, WIDTH, HEIGHT);
+		g.setFont(titleFont10);
+		g.setColor(Color.WHITE);
+		g.drawString("CONGRATS YOU WON!!!! :D", 50, 200);
+		g.setFont(titleFont11);
+		g.setColor(Color.WHITE);
+		g.drawString("Press enter to go back to Menu.", 50, 400);
 	}
 
 }

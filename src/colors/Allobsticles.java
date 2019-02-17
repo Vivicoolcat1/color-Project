@@ -13,7 +13,7 @@ public class Allobsticles {
 	
 		obsticles = new Obsticle[10];
 		for (int i = 0; i < obsticles.length; i++) {
-			obsticles[i] = new Obsticle(2 *i,0, y + Space * i);
+			obsticles[i] = new Obsticle( i,0, y + Space * i);
 
 		}
 

@@ -17,7 +17,7 @@ public class Ball extends GameObject {
 	Allobsticles ao;
 
 	public void update() {
-
+System.out.println("ball : " + x +" y " + y);
 		System.out.println("Cb =" + this.collisionBox);
 		System.out.println(this.c);
 		super.update();
@@ -61,7 +61,7 @@ public class Ball extends GameObject {
 		
 		}
 if(GamePanel.finish.collisionBox.intersects(this.collisionBox)) {
-	System.out.println("They hit");
+	GamePanel.currentState = GamePanel.YOUWIN_STATE;
 }
 		if (y < minY && y < -500) {
 			minY = y;

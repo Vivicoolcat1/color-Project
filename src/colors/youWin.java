@@ -3,11 +3,13 @@ package colors;
 import java.awt.Color;
 import java.awt.Graphics;
 
+import org.omg.Messaging.SyncScopeHelper;
+
 
 public class youWin extends GameObject {
 
-	public youWin(float speed,int x, int y, int height, int width) {
-		super(speed,x,y,height,width);
+	public youWin(int x, int y, int height, int width) {
+		super(0,-x,-y,height,width);
 		
 		
 		
@@ -21,11 +23,13 @@ public class youWin extends GameObject {
 	}
 	public void draw(Graphics g) {
 		g.setColor(Color.WHITE);
-		g.fillRect(x + GamePanel.cam.x, y + GamePanel.cam.y, width, height);
 		super.draw(g);
+		g.fillRect(x+ GamePanel.cam.x, y + GamePanel.cam.y, width, height);
 		
 		
-		
+		System.out.println("It is being drawn");
+	
+		System.out.println("you win : " + x +" y " +y);
 		
 	}
 }
