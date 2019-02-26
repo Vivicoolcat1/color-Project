@@ -27,9 +27,6 @@ public class youWin extends GameObject {
 		g.fillRect(x+ GamePanel.cam.x, y + GamePanel.cam.y, width, height);
 		
 		
-		System.out.println("It is being drawn");
-	
-		System.out.println("you win : " + x +" y " +y);
 		
 	}
 }

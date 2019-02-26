@@ -29,7 +29,7 @@ public class GamePanel extends JPanel implements ActionListener, KeyListener {
 	Font titleFont11;
 	
 	Ball ball  = new Ball( -5,300, 0, 25, 25);
-	ObjectManager om  = new ObjectManager(ball);
+	
 	Allobsticles ao;
 	  static youWin finish;
 	
@@ -51,7 +51,7 @@ public class GamePanel extends JPanel implements ActionListener, KeyListener {
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		// TODO Auto-generated method stub
-		System.out.println("Test1");
+		
 
 		repaint();
 		if (currentState == MENU_STATE) {
@@ -62,11 +62,7 @@ public class GamePanel extends JPanel implements ActionListener, KeyListener {
 
 			updateGameState();
 
-			System.out.println(ball.y);
-			System.out.println(startingY);
-			System.out.println(cam.y);
-			System.out.println(ball.gravity);
-			System.out.println(ball.speed);
+			
 			
 		} else if (currentState == END_STATE) {
 
@@ -81,13 +77,13 @@ public class GamePanel extends JPanel implements ActionListener, KeyListener {
 	public static void moveCamera (int y) {
 		cam.y = y * -1 + 200;
 		
-			System.out.println("camera y " + cam.y);
+			
 		
 	}
 	@Override
 
 	public void paintComponent(Graphics g) {
-		System.out.println("test3");
+
 		if (currentState == MENU_STATE) {
 
 			drawMenuState(g);
@@ -190,7 +186,7 @@ public class GamePanel extends JPanel implements ActionListener, KeyListener {
 		if (moveUp) {
 			ball.speed = -5;
 
-			System.out.println("Test 5");
+			
 		}
 		ball.update();
 		ao.update();
@@ -224,7 +220,7 @@ public class GamePanel extends JPanel implements ActionListener, KeyListener {
 		g.setFont(titleFont3);
 		g.setColor(Color.WHITE);
 		g.drawString("Press SPACE for instructions", 50, 600);
-		System.out.println("test2");
+		
 
 	}
 

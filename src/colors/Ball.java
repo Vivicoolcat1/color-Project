@@ -17,9 +17,8 @@ public class Ball extends GameObject {
 	Allobsticles ao;
 
 	public void update() {
-System.out.println("ball : " + x +" y " + y);
-		System.out.println("Cb =" + this.collisionBox);
-		System.out.println(this.c);
+
+		
 		super.update();
 		speed += gravity;
 		y += speed;
@@ -28,32 +27,32 @@ System.out.println("ball : " + x +" y " + y);
 		for (Obsticle obsticle : ao.obsticles) {
 			
 			if (obsticle.a.collisionBox.intersects(this.collisionBox)) {
-				System.out.println("COLLISION");
+				
 				if (!obsticle.a.c.equals(this.c)) {
 					GamePanel.currentState = GamePanel.END_STATE;
 				
 				}
 			}
 			if (obsticle.b.collisionBox.intersects(this.collisionBox)) {
-				System.out.println("COLLISION");
+				
 				if (!obsticle.b.c.equals(this.c)) {
 					GamePanel.currentState = GamePanel.END_STATE;
 				}
 			}
 			if (obsticle.c.collisionBox.intersects(this.collisionBox)) {
-				System.out.println("COLLISION");
+				
 				if (!obsticle.c.c.equals(this.c)) {
 					GamePanel.currentState = GamePanel.END_STATE;
 				}
 			}
 			if (obsticle.d.collisionBox.intersects(this.collisionBox)) {
-				System.out.println("COLLISION");
+				
 				if (!obsticle.d.c.equals(this.c)) {
 					GamePanel.currentState = GamePanel.END_STATE;
 				}
 			}
 			if (obsticle.e.collisionBox.intersects(this.collisionBox)) {
-				System.out.println("COLLISION");
+				
 				if (!obsticle.e.c.equals(this.c)) {
 					GamePanel.currentState = GamePanel.END_STATE;
 				}

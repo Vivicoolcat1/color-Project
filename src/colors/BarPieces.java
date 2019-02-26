@@ -19,8 +19,7 @@ public  BarPieces(float speed, int x, int y, int height, int width ) {
 	public void update() {
 		super.update();
 		x += speed;
-		System.out.println("CB 2 = " + this.collisionBox);
-		System.out.println(this.c);
+		
 	
 	}
 	
@@ -30,10 +29,7 @@ public  BarPieces(float speed, int x, int y, int height, int width ) {
 		g.fillRect(x + GamePanel.cam.x, y + GamePanel.cam.y , width, height);
 		g.setColor(Color.BLACK);
 		g.drawRect(x + GamePanel.cam.x, y + GamePanel.cam.y, width, height);
-		System.out.println(GamePanel.cam.x);
-	    System.out.println(GamePanel.cam.y);
-	    System.out.println(x);
-	    System.out.println(y);
+		
 	    super.draw(g);
 	}
 	public void setColor(Color c) {
